@@ -18,10 +18,10 @@ function startPhase () {
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     // check if the first wire is black
-    if (WireList[0] == 4) {
-        game.splash("First wire is black")
+    if (wireCount == 0) {
+        _3Wire()
     } else {
-        game.splash("First wire is not black")
+    	
     }
 })
 function InitSerial () {
@@ -120,13 +120,16 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorPos = cursorPos % wireCount
     UpdateCursor()
 })
+function _3Wire () {
+	
+}
 let mySprite: Image = null
 let mySprite2: Sprite = null
 let sprite_list: Sprite[] = []
 let WireSprites: Image[] = []
 let colourList: number[] = []
-let SerialNumber = 0
 let WireList: number[] = []
+let SerialNumber = 0
 let Ratio = 0
 let cursor: Sprite = null
 let cursorPos = 0
