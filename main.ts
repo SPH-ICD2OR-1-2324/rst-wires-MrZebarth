@@ -21,7 +21,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (wireCount == 0) {
         _3Wire()
     } else {
-        _4wire()
+    	
     }
 })
 function InitSerial () {
@@ -112,9 +112,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2 = sprites.create(WireSprites[cursorPos], SpriteKind.Wire)
     mySprite2.top = Math.floor(120 / Ratio) * (cursorPos + 1)
 })
-function _4wire () {
-	
-}
 sprites.onCreated(SpriteKind.Wire, function (sprite) {
     sprite.setFlag(SpriteFlag.Ghost, true)
 })
