@@ -16,6 +16,14 @@ function startPhase () {
         wireCount = game.askForNumber("# of wires? (3-6)", 1)
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    // check if the first wire is black
+    if (wireCount == 0) {
+        _3Wire()
+    } else {
+    	
+    }
+})
 function InitSerial () {
     SerialNumber = game.askForNumber("Last Digit of Serial Number", 1)
 }
@@ -58,6 +66,12 @@ function InitCursor () {
     cursorPos = 0
 }
 function InitColours () {
+    // Setup colours
+    // 0 - red
+    // 1 - white
+    // 2 - blue
+    // 3 - yellow
+    // 4 - black
     colourList = [
     2,
     1,
@@ -68,6 +82,7 @@ function InitColours () {
     WireList = []
     Ratio = wireCount + 1
     WireSprites = []
+    // Loop through the wires and get them set up
     for (let index = 0; index <= wireCount - 1; index++) {
         WireList.push(0)
         mySprite = img`
@@ -89,9 +104,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     WireSprites[cursorPos].fill(colourList[WireList[cursorPos]])
     WireSprites[cursorPos].drawRect(0, 0, 160, 5, 15)
     sprite_list = sprites.allOfKind(SpriteKind.Wire)
-    for (let value of sprite_list) {
-        if (value.top == Math.floor(120 / Ratio) * (cursorPos + 1)) {
-            value.destroy()
+    for (let value2 of sprite_list) {
+        if (value2.top == Math.floor(120 / Ratio) * (cursorPos + 1)) {
+            value2.destroy()
         }
     }
     mySprite2 = sprites.create(WireSprites[cursorPos], SpriteKind.Wire)
@@ -105,6 +120,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorPos = cursorPos % wireCount
     UpdateCursor()
 })
+function _3Wire () {
+	
+}
 let mySprite: Image = null
 let mySprite2: Sprite = null
 let sprite_list: Sprite[] = []
